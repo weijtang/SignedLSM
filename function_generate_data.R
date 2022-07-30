@@ -1,20 +1,27 @@
 # Data Generation -------------------------------------------------------------
 # Description: Generate simulated data
-# Date: July, 2020
+# Date: Sep, 2021
 # -----------------------------------------------------------------------------
 # Input:
-# n    - Number of nodes
-# k    - Dimension of latent position
-# seed - Numeric seed
+# n         - Number of nodes
+# k         - Dimension of latent position
+# seed      - Numeric seed
+# alpha_bar - control edge density
+# u_true    - control positive/negative edge ratio
 # -----------------------------------------------------------------------------
-# Output: update!!!!!!!
+# Output: 
 # U_true           - True U
 # alpha_list_true  - True alpha
 # Lambda_list_true - True Lambda
 # A_list_true      - One realization of adjacency matrices
+# Z_true     - True Z (latent position variable)
+# alpha_true - True alpha (node degree heterogeneity parameter)
+# w_true     - True w (associated with latent polar variable)
+# u_true     - True u (associated with latent polar variable)
+# A_true     - One realization of signed adjacency matrices
 # -----------------------------------------------------------------------------
 
-generate_data = function(n, k, seed){
+generate_data = function(n, k, seed, alpha_bar, u_true){
   # Setup for Z_true ----------------------------------------------------------
   library(pracma)
   set.seed(1)
@@ -26,11 +33,11 @@ generate_data = function(n, k, seed){
   # Setup for alpha_true ---------------------------------------------------
   set.seed(1)
   alpha = runif(n, 1, 3)
-  alpha_true = - alpha / sum(alpha)
+  alpha_true = -alpha_bar - alpha / sum(alpha)
   
   # Setup for w_true, u_true, c_true ---------------------------------------
   w_true = rep(1/sqrt(k),k)
-  u_true = 0
+  # u_true = 0
   
   # Setup for A_true -------------------------------------------------------
   generate_A = function(Z, alpha, w, u){
@@ -46,7 +53,7 @@ generate_data = function(n, k, seed){
     A_abs <- A_abs + t(A_abs)
     
     # generate signs
-    Eta <- (Z %*% w + u * rep(n,1)) %*% t(Z %*% w + u * rep(n,1))
+    Eta <- (Z %*% w + u * rep(1,n)) %*% t(Z %*% w + u * rep(1,n))
     Q <- sigmoid(Eta)
     A_sign <- matrix(0, nrow = n, ncol = n)
     Q_ut <- Q[upper.tri(Q)]
