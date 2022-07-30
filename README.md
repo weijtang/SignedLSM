@@ -4,6 +4,8 @@ This repo provides implementation for the latent space approach for signed netwo
 
 [Population-Level Balance for Signed Networks](https://sites.google.com/umich.edu/weijingtang/research?authuser=0)
 
+[Weijing Tang](https://sites.google.com/umich.edu/weijingtang/home) and [Ji Zhu](http://dept.stat.lsa.umich.edu/~jizhu/). 
+
 ## Getting Started
 ### Prerequisites
 The implementation of the proposed method is build on top of the following packages in [R](https://www.r-project.org/).  
