@@ -1,4 +1,4 @@
-setwd("~/Dropbox (Personal)/Research/SignedNetwork/code copy")
+setwd("~/SignedLSM")
 require(scales)
 ############### separate estimation ###############
 load("./res/synthetic/separate_estimation_usvt_init.RData")
