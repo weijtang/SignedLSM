@@ -8,13 +8,13 @@ This repo provides implementation for the latent space approach for signed netwo
 
 ## Getting Started
 ### Prerequisites
-The implementation of the proposed method is build on top of the following packages in [R](https://www.r-project.org/) (version 4.0.2).  
+The implementation of the proposed method is built on top of the following packages in [R](https://www.r-project.org/) (version 4.0.2).  
 
-- 'pracma'
-- 'scales'
-- 'ggplot2'
-- 'ggpubr'
-- 'dplyr'
+- 'pracma' 2.4.0
+- 'scales' 1.2.0
+- 'ggplot2' 3.3.6
+- 'ggpubr' 0.5.0
+- 'dplyr' 1.0.10
 
 
 ## Usage
